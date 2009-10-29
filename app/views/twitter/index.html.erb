@@ -1,0 +1,8 @@
+<h1>My Twitter client.</h1>
+<br />
+<% form_for :twitter, :url => {:action=>'show_timeline'} do |f| -%>
+<p>Twitter USERNAME<br/>
+<%= f.text_field :twitter_username %></p>
+<p>Twitter PASSWARD<br/>
+<%= f.text_field :twitter_pass %></p>
+<% end %>

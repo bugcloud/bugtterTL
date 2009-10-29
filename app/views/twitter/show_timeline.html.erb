@@ -1,0 +1,5 @@
+<h1>This is your Timeline.</h1>
+<% @timeline.each do |t| %>
+  <%=h t[:user][:screen_name] %>
+  <%= t[:text] %>
+<% end %>
