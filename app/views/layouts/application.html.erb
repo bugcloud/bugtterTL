@@ -5,6 +5,22 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <%= javascript_include_tag :defaults  %>
+  <%= javascript_include_tag 'protocommand'  %>
+  <script>
+  (function() {
+    var konami = new ProtoCommand('left');
+    konami.action = function() {
+      bgcolor = "#";
+      for(i = 0 ; i < 6 ; i++) {
+         color = Math.floor(16 * Math.random());
+         color = color.toString(16);
+         bgcolor = bgcolor + color;
+      }
+      document.body.style.backgroundColor = bgcolor;
+    };
+    ProtoCommand.observeAll();
+  })();
+</script>
   <%= stylesheet_link_tag 'bugtter' %>
   <title>bugtterTL</title>
 </head>
