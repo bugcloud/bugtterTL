@@ -7,8 +7,8 @@ class TwitterController < ApplicationController
   end
 
   def show_timeline
-    @client = initialize_twitter(params[:twitter_username], params[:twitter_pass])
-    @timeline = get_friends_timeline
+    cl = initialize_twitter(params[:twitter_username], params[:twitter_pass])
+    @timeline = get_friends_timeline(cl)
     respond_to do |format|
       format.html # index.html.erb
       #format.xml  { render :xml => @second_statuses }
@@ -17,12 +17,14 @@ class TwitterController < ApplicationController
 
   private
   def initialize_twitter(user, pass)
-    twitter_cl = Twitter::Client.new(:login => user, :password => pass)
+    #Basic auth
+    httpauth = Twitter::HTTPAuth.new(user, pass)
+    twitter_cl = Twitter::Base.new(httpauth)
     return twitter_cl
   end
 
-  def get_friends_timeline
-    twitter_tl = @client.timeline_for(:friend, :count => 10)
+  def get_friends_timeline(client)
+    twitter_tl = client.friends_timeline()
     return twitter_tl
   end
 
