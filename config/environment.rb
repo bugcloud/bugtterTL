@@ -39,5 +39,11 @@ Rails::Initializer.run do |config|
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
 end
-require 'twitter'
+require 'oauth'
+require 'rubytter'
 require 'json'
+
+#$CONSUMER_KEY = 'your CONSUMER_KEY'
+#$CONSUMER_SECRET = 'your CONSUMER_SECRET'
+#$ACCESS_TOKEN = 'your ACCESS_TOKEN'
+#$ACCESS_TOKEN_SECRET= 'your ACCESS_TOKEN_SECRET'

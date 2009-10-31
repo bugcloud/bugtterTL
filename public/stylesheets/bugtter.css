@@ -1,0 +1,72 @@
+body {
+    background:#FF00A0 url(/images/pattern.png) repeat;
+    color: #FFF;
+}
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+input {
+    border:2px solid #6F6F6F;
+}
+textarea {
+    border:2px solid #6F6F6F;
+}
+#twitter_form {
+    margin:0;
+    padding:0;
+}
+#twitter_form input.timeline_button{
+    background:url(/images/timeline_button.png) no-repeat;
+    float:left;
+    display:block;
+    position:relative; top:50%;
+    text-indent:-9999px;
+    border:none;
+    width:100px;
+    height:30px;
+    margin:70px 1px 0px 10px;
+}
+#twitter_form input.post_tweet_button{
+    background:url(/images/tweet_button.png) no-repeat;
+    float:left;
+    display:block;
+    position:relative; top:50%;
+    text-indent:-9999px;
+    border:none;
+    width:100px;
+    height:30px;
+    margin:70px 5px 0px 8px;
+}
+#twitter_form table {
+    margin-top:10px;
+}
+#twitter_form td.td-right {
+    padding-left:15px;
+}
+#timeline {
+    margin:30px 0 0 20px;
+}
+#timeline table.mytl {
+    width:700px;
+}
+#timeline td.user_image {
+    padding:5px;
+}
+#timeline td.user_image a {
+    color:#fff;
+}
+#timeline td.user_image a:hover {
+    color:#9FF8FF;
+}
+#timeline td.user_tweet {
+    color:#333;
+    padding-left:10px;
+    background-color:#fff;
+}
+#timeline td.user_tweet:hover {
+    padding-left:10px;
+    background-color:#DFFDFF;
+}

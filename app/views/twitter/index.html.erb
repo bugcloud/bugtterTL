@@ -1,9 +1,52 @@
-<h1>My Twitter client.</h1>
-<br />
-<% form_for :twitter, :url => {:action=>'show_timeline'} do |f| -%>
-<p>Twitter USERNAME<br/>
-<%= f.text_field :twitter_username %></p>
-<p>Twitter PASSWARD<br/>
-<%= f.password_field :twitter_pass %></p>
-<%= f.submit 'GET' %>
+<%= image_tag 'bugtter.png' %>
+<div id="twitter_form">
+<% form_tag :action=>'show_timeline' do -%>
+<table>
+  <tr>
+    <td>Twitter USERNAME</td>
+    <td class="td-right">Twitter PASSWARD</td>
+    <td class="td-right">TimeLine Range</td>
+  </tr>
+  <tr>
+    <td><%= text_field_tag :twitter_username %></td>
+    <td class="td-right"><%= password_field_tag :twitter_pass %></td>
+    <td class="td-right">
+      <%= select_tag :range, "<option value='1' selected='selected'>0 - 20</option>
+                                <option value='2'>21 - 40</option>
+                                <option value='3'>41 - 60</option>
+                                <option value='4'>61 - 80</option>
+                                <option value='5'>81 - 100</option>
+                                <option value='6'>101 - 120</option>
+                                <option value='7'>121 - 140</option>
+                                <option value='8'>141 - 160</option>
+                                <option value='9'>181 - 180</option>
+                                <option value='10'>181 - 200</option>
+                                <option value='11'>201 - 220</option>
+                                <option value='12'>221 - 240</option>
+                                <option value='13'>241 - 260</option>
+                                <option value='14'>261 - 280</option>
+                                <option value='15'>281 - 300</option>" %>
+    </td>
+  </tr>
+  <tr><td colspan="3">&nbsp;</td></tr>
+  <tr>
+    <td colspan="3">Tweet!!!</td>
+  </tr>
+  <tr>
+    <td colspan="2"><%= text_area_tag :tweet, nil, :size=>"30x5" %></td>
+    <td>
+      <%= submit_to_remote 'show_timeline', 'Show TL',
+                        :url => { :action => 'show_timeline' },
+                        :update =>'timeline',
+                        :html => { :class => 'timeline_button'}  %>
+      <%= submit_to_remote 'post_tweet', 'tweet!',
+                        :url => { :action => 'post_tweet' },
+                        :update =>'timeline',
+                        :after =>"$('tweet').value = ''",
+                        :html => { :class => 'post_tweet_button'}  %>
+    </td>
+  </tr>
+</table>
 <% end %>
+</div>
+<div id="timeline"></div>
