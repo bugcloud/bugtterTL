@@ -5,7 +5,7 @@
       <a href="http://twitter.com/<%= t[:user][:screen_name] %>" target=_blank><%= image_tag(t[:user][:profile_image_url],:alt => t[:user][:screen_name],:title => t[:user][:screen_name]) %></a>
     </td>
     <td class="user_tweet">
-      <%= t[:text] %>
+      <%= add_href(t[:text]) %>
     </td>
   </tr>
   <% end %>
