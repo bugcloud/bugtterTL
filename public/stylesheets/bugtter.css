@@ -70,3 +70,9 @@ textarea {
     padding-left:10px;
     background-color:#DFFDFF;
 }
+#timeline td.user_tweet a {
+    color:#DF0091;
+}
+#timeline td.user_tweet a:hover {
+    color:#FFBFEA;
+}
