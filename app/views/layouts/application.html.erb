@@ -20,6 +20,22 @@
     };
     ProtoCommand.observeAll();
   })();
+
+  function link_by_post(type,id,tweet_id){
+      switch(type){
+        case "remove_tweet":
+          var username = document.getElementById("twitter_username");
+          var userpass = document.getElementById("twitter_pass");
+          var before = new Effect.SwitchOff(tweet_id);
+          var a = new Ajax.Updater('timeline', "twitter/remove_tweet/"+id,
+                          {
+                            "method": "post",
+                            "parameters": "twitter_username="+username.value+"&twitter_pass="+userpass.value,
+                            asynchronous:true,
+                            evalScripts:true
+                          });
+      }
+    }
 </script>
   <%= stylesheet_link_tag 'bugtter' %>
   <title>bugtterTL</title>

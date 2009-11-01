@@ -62,6 +62,7 @@ textarea {
     color:#9FF8FF;
 }
 #timeline td.user_tweet {
+    width:610px;
     color:#333;
     padding-left:10px;
     background-color:#fff;
@@ -75,4 +76,12 @@ textarea {
 }
 #timeline td.user_tweet a:hover {
     color:#FFBFEA;
+}
+#timeline td.handle_tweet {
+    width:40px;
+    color:#fff;
+    padding-left:5px;
+}
+#timeline td.handle_tweet a {
+    color:#fff;
 }

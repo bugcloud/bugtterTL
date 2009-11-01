@@ -1,6 +1,6 @@
 <%= image_tag 'bugtter.png' %>
 <div id="twitter_form">
-<% form_tag :action=>'show_timeline' do -%>
+<% form_tag({:action=>'show_timeline'},{:name=>'form_for_twitter'}) do -%>
 <table>
   <tr>
     <td>Twitter USERNAME</td>
@@ -38,11 +38,13 @@
       <%= submit_to_remote 'show_timeline', 'Show TL',
                         :url => { :action => 'show_timeline' },
                         :update =>'timeline',
+                        :complete => visual_effect(:fade, "timeline", :duration => 0.4, :from=>0.0, :to=>1.0),
                         :html => { :class => 'timeline_button'}  %>
       <%= submit_to_remote 'post_tweet', 'tweet!',
                         :url => { :action => 'post_tweet' },
                         :update =>'timeline',
                         :after =>"$('tweet').value = ''",
+                        :complete => visual_effect(:grow, "timeline", :direction => 'bottom-right', :duration => 1.0),
                         :html => { :class => 'post_tweet_button'}  %>
     </td>
   </tr>

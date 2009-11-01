@@ -1,12 +1,17 @@
 <table class="mytl">
   <% @timeline.each do |t| %>
-  <tr>
+  <tr id="tweet<%= t.id%>">
     <td class="user_image">
       <a href="http://twitter.com/<%= t[:user][:screen_name] %>" target=_blank><%= image_tag(t[:user][:profile_image_url],:alt => t[:user][:screen_name],:title => t[:user][:screen_name]) %></a>
     </td>
     <td class="user_tweet">
       <%= add_href(t[:text]) %>
     </td>
+    <% if @me == t[:user][:screen_name] %>
+    <td class="handle_tweet">
+      <a href="javascript:void(0)" onclick="return link_by_post('remove_tweet',<%= t.id%>,'tweet<%= t.id%>');">del</a>
+    </td>
+    <% end %>
   </tr>
   <% end %>
 </table>

@@ -15,6 +15,7 @@ class TwitterController < ApplicationController
   end
 
   def show_timeline
+    @me = params[:twitter_username]
     if params[:twitter_username].blank? || params[:twitter_pass].blank?
       flash[:notice] = "Input USERNAME and PASSWARD."
       render :error
@@ -34,6 +35,7 @@ class TwitterController < ApplicationController
   end
 
   def post_tweet
+    @me = params[:twitter_username]
     if params[:twitter_username].blank? || params[:twitter_pass].blank? || params[:tweet].blank?
       flash[:notice] = "Input USERNAME,PASSWARD and tweet."
       render :error
@@ -41,7 +43,27 @@ class TwitterController < ApplicationController
       begin
         cl = initialize_twitter_by_basicauth(params[:twitter_username], params[:twitter_pass])
         cl.update(params[:tweet])
-        @timeline = get_friends_timeline(cl, params[:page])
+        @timeline = get_friends_timeline(cl, 1)
+        respond_to do |format|
+          format.html # show_timeline.html.erb
+        end
+      rescue Rubytter::APIError
+        flash[:notice] = "Login failed. Check USERNAME and PASSWARD."
+        render :error
+      end
+    end
+  end
+  
+  def remove_tweet
+    @me = params[:twitter_username]
+    if params[:twitter_username].blank? || params[:twitter_pass].blank? || params[:id].blank?
+      flash[:notice] = "Input USERNAME,PASSWARD and select tweet you want to remove."
+      render :error
+    else
+      begin
+        cl = initialize_twitter_by_basicauth(params[:twitter_username], params[:twitter_pass])
+        cl.remove_status(params[:id])
+        @timeline = get_friends_timeline(cl, 1)
         respond_to do |format|
           format.html # show_timeline.html.erb
         end
